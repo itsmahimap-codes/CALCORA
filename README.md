@@ -45,3 +45,9 @@ Multiply 20 by 5.
 20 × 5 = 100
 
 Answer: 100
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+See the `LICENSE` file for more information.
