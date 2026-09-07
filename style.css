@@ -1,0 +1,1094 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+:root {
+
+    --bg: #0b0b12;
+
+    --card: rgba(255, 255, 255, 0.06);
+
+    --card-border: rgba(255, 255, 255, 0.1);
+
+    --text: #ffffff;
+
+    --muted: #9a9aa8;
+
+    --button: rgba(255, 255, 255, 0.08);
+
+    --button-hover: rgba(255, 255, 255, 0.14);
+
+    --accent: #a78bfa;
+
+    --accent-dark: #7c3aed;
+
+}
+
+
+
+/* BODY */
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(124, 58, 237, 0.2),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(167, 139, 250, 0.12),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+    color: var(--text);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding: 30px 20px;
+
+    transition:
+        background 0.3s,
+        color 0.3s;
+
+}
+
+
+
+.app {
+
+    width: 100%;
+
+    max-width: 430px;
+
+}
+
+
+
+/* HEADER */
+
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.header h1 {
+
+    font-size: 28px;
+
+    letter-spacing: 4px;
+
+}
+
+
+.header p {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 5px;
+
+}
+
+
+.theme-btn {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 50%;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.theme-btn:hover {
+
+    transform: rotate(20deg);
+
+    background: var(--button-hover);
+
+}
+
+
+
+/* CALCULATOR */
+
+.calculator {
+
+    background: var(--card);
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 28px;
+
+    padding: 20px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+}
+
+
+
+/* DISPLAY */
+
+.display {
+
+    min-height: 120px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    padding:
+        15px
+        10px
+        25px;
+
+    overflow: hidden;
+
+}
+
+
+#expression {
+
+    color: var(--muted);
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+
+}
+
+
+#result {
+
+    font-size: 48px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    word-break: break-all;
+
+}
+
+
+
+/* BUTTONS */
+
+.buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+}
+
+
+.buttons button {
+
+    height: 65px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.2s;
+
+}
+
+
+.buttons button:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+.buttons button:active {
+
+    transform: scale(0.9);
+
+}
+
+
+.buttons .action {
+
+    color: var(--accent);
+
+}
+
+
+.buttons .operator {
+
+    background:
+        rgba(124, 58, 237, 0.18);
+
+    color: var(--accent);
+
+}
+
+
+.buttons .operator:hover {
+
+    background:
+        rgba(124, 58, 237, 0.3);
+
+}
+
+
+.buttons .equals {
+
+    background: var(--accent-dark);
+
+    color: white;
+
+}
+
+
+.buttons .equals:hover {
+
+    background: var(--accent);
+
+}
+
+
+.buttons .zero {
+
+    grid-column: span 2;
+
+}
+
+
+
+/* MODES */
+
+.modes {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+}
+
+
+.mode {
+
+    padding: 12px 4px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 14px;
+
+    background: var(--card);
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    transition: 0.2s;
+
+}
+
+
+.mode:hover {
+
+    color: var(--text);
+
+    background: var(--button-hover);
+
+}
+
+
+.mode.active {
+
+    color: var(--text);
+
+    border-color: var(--accent);
+
+    background:
+        rgba(124, 58, 237, 0.15);
+
+}
+
+
+
+/* PANELS */
+
+.scientific-panel,
+.finance-panel,
+.student-panel {
+
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 22px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(20px);
+
+    animation:
+        panelAppear 0.25s ease;
+
+}
+
+
+@keyframes panelAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.scientific-panel h2,
+.finance-panel h2,
+.student-panel h2 {
+
+    font-size: 18px;
+
+}
+
+
+.panel-subtitle {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 5px;
+
+}
+
+
+
+/* SCIENTIFIC */
+
+.scientific-tools {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+}
+
+
+.scientific-tools button {
+
+    padding: 13px 5px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 12px;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+
+}
+
+
+.scientific-tools button:hover {
+
+    background:
+        rgba(124, 58, 237, 0.2);
+
+    border-color: var(--accent);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+
+/* SMART EXPLAIN */
+
+.explanation {
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 22px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(20px);
+
+}
+
+
+.explanation-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+
+}
+
+
+.explanation-header h2 {
+
+    font-size: 16px;
+
+}
+
+
+.smart-input {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+}
+
+
+.smart-input input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 13px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 14px;
+
+}
+
+
+.smart-input input::placeholder {
+
+    color: var(--muted);
+
+}
+
+
+.smart-input input:focus {
+
+    border-color: var(--accent);
+
+}
+
+
+.smart-input button {
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: var(--accent-dark);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+
+}
+
+
+.smart-input button:hover {
+
+    background: var(--accent);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+#explanationContent {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+.explanation-step {
+
+    padding: 6px 0;
+
+}
+
+
+.explanation-step strong {
+
+    color: var(--text);
+
+}
+
+
+.explanation-answer {
+
+    margin-top: 8px;
+
+    padding-top: 12px;
+
+    border-top:
+        1px solid var(--card-border);
+
+    color: var(--text);
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* FINANCE */
+
+.finance-tools,
+.student-tools {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+
+    margin: 18px 0;
+
+}
+
+
+.finance-tool,
+.student-tool {
+
+    padding: 12px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 14px;
+
+    background: var(--button);
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.finance-tool:hover,
+.student-tool:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+.finance-tool.active,
+.student-tool.active {
+
+    color: var(--text);
+
+    border-color: var(--accent);
+
+    background:
+        rgba(124, 58, 237, 0.15);
+
+}
+
+
+.finance-form,
+.student-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.finance-form label,
+.student-form label {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+
+.finance-form input,
+.student-form input {
+
+    padding: 13px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 15px;
+
+}
+
+
+.finance-form input:focus,
+.student-form input:focus {
+
+    border-color: var(--accent);
+
+}
+
+
+.finance-calculate,
+.student-calculate {
+
+    margin-top: 8px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: var(--accent-dark);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+
+}
+
+
+.finance-calculate:hover,
+.student-calculate:hover {
+
+    background: var(--accent);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.finance-result,
+.student-result {
+
+    margin-top: 12px;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    background: var(--button);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+
+/* HISTORY */
+
+.history {
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border: 1px solid var(--card-border);
+
+    border-radius: 22px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(20px);
+
+}
+
+
+.history-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+}
+
+
+.history-header h2 {
+
+    font-size: 16px;
+
+}
+
+
+#clearHistory {
+
+    border: none;
+
+    background: none;
+
+    color: var(--accent);
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+}
+
+
+#historyList {
+
+    max-height: 180px;
+
+    overflow-y: auto;
+
+}
+
+
+.history-item {
+
+    padding: 10px 0;
+
+    border-bottom:
+        1px solid var(--card-border);
+
+    animation:
+        historyAppear 0.25s ease;
+
+}
+
+
+.history-expression {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+.history-result {
+
+    font-size: 18px;
+
+    margin-top: 3px;
+
+}
+
+
+.empty-history {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    text-align: center;
+
+    padding: 10px;
+
+}
+
+
+@keyframes historyAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(6px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+
+/* LIGHT MODE */
+
+body.light {
+
+    --bg: #f4f3f8;
+
+    --card: rgba(255, 255, 255, 0.75);
+
+    --card-border: rgba(0, 0, 0, 0.08);
+
+    --text: #17151f;
+
+    --muted: #6f6b78;
+
+    --button: rgba(0, 0, 0, 0.05);
+
+    --button-hover: rgba(0, 0, 0, 0.09);
+
+    --accent: #7c3aed;
+
+    --accent-dark: #6d28d9;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(124, 58, 237, 0.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(167, 139, 250, 0.1),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+}
+
+
+body.light .calculator,
+body.light .explanation,
+body.light .scientific-panel,
+body.light .finance-panel,
+body.light .student-panel,
+body.light .history {
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+
+    body {
+
+        padding:
+            15px 12px;
+
+    }
+
+
+    .header h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .calculator {
+
+        padding: 15px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .buttons {
+
+        gap: 8px;
+
+    }
+
+
+    .buttons button {
+
+        height: 60px;
+
+        border-radius: 16px;
+
+    }
+
+
+    #result {
+
+        font-size: 40px;
+
+    }
+
+
+    .modes {
+
+        gap: 6px;
+
+    }
+
+
+    .mode {
+
+        font-size: 10px;
+
+        padding:
+            11px 2px;
+
+    }
+
+
+    .scientific-tools {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+}

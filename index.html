@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CALCORA — Smart Calculator</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+<main class="app">
+
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div>
+
+            <h1>CALCORA</h1>
+
+            <p>
+                Calculate. Understand. Simplify.
+            </p>
+
+        </div>
+
+
+        <button
+            id="themeToggle"
+            class="theme-btn"
+        >
+            ☾
+        </button>
+
+    </header>
+
+
+
+    <!-- BASIC CALCULATOR -->
+    <section class="calculator">
+
+        <div class="display">
+
+            <div id="expression">
+                0
+            </div>
+
+            <div id="result">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button class="action">
+                AC
+            </button>
+
+            <button class="action">
+                ⌫
+            </button>
+
+            <button class="action">
+                %
+            </button>
+
+            <button class="operator">
+                ÷
+            </button>
+
+
+            <button>
+                7
+            </button>
+
+            <button>
+                8
+            </button>
+
+            <button>
+                9
+            </button>
+
+            <button class="operator">
+                ×
+            </button>
+
+
+            <button>
+                4
+            </button>
+
+            <button>
+                5
+            </button>
+
+            <button>
+                6
+            </button>
+
+            <button class="operator">
+                −
+            </button>
+
+
+            <button>
+                1
+            </button>
+
+            <button>
+                2
+            </button>
+
+            <button>
+                3
+            </button>
+
+            <button class="operator">
+                +
+            </button>
+
+
+            <button class="zero">
+                0
+            </button>
+
+            <button>
+                .
+            </button>
+
+            <button class="equals">
+                =
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- MODES -->
+    <nav class="modes">
+
+        <button
+            class="mode active"
+            data-mode="basic"
+        >
+            🧮 Basic
+        </button>
+
+
+        <button
+            class="mode"
+            data-mode="scientific"
+        >
+            🧪 Scientific
+        </button>
+
+
+        <button
+            class="mode"
+            data-mode="finance"
+        >
+            💰 Finance
+        </button>
+
+
+        <button
+            class="mode"
+            data-mode="student"
+        >
+            🎓 Student
+        </button>
+
+    </nav>
+
+
+
+    <!-- SCIENTIFIC MODE -->
+    <section
+        class="scientific-panel"
+        id="scientificPanel"
+    >
+
+        <h2>
+            🧪 Scientific Tools
+        </h2>
+
+        <p class="panel-subtitle">
+            Advanced calculations without the clutter.
+        </p>
+
+
+        <div class="scientific-tools">
+
+            <button data-scientific="sqrt">
+                √
+            </button>
+
+            <button data-scientific="square">
+                x²
+            </button>
+
+            <button data-scientific="cube">
+                x³
+            </button>
+
+            <button data-scientific="sin">
+                sin
+            </button>
+
+            <button data-scientific="cos">
+                cos
+            </button>
+
+            <button data-scientific="tan">
+                tan
+            </button>
+
+            <button data-scientific="log">
+                log
+            </button>
+
+            <button data-scientific="ln">
+                ln
+            </button>
+
+            <button data-scientific="pi">
+                π
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SMART EXPLAIN -->
+    <section
+        class="explanation"
+        id="explanation"
+    >
+
+        <div class="explanation-header">
+
+            <span>🧠</span>
+
+            <h2>
+                Smart Explain
+            </h2>
+
+        </div>
+
+
+        <div class="smart-input">
+
+            <input
+                type="text"
+                id="smartInput"
+                placeholder="Try: 15% of 2000"
+            >
+
+            <button id="smartCalculate">
+                Ask
+            </button>
+
+        </div>
+
+
+        <div id="explanationContent">
+
+            <p>
+                Calculate something to see how it works.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FINANCE MODE -->
+    <section
+        class="finance-panel"
+        id="financePanel"
+    >
+
+        <h2>
+            💰 Finance Tools
+        </h2>
+
+        <p class="panel-subtitle">
+            Everyday money calculations made simple.
+        </p>
+
+
+        <div class="finance-tools">
+
+            <button
+                class="finance-tool active"
+                data-tool="discount"
+            >
+                🏷️ Discount
+            </button>
+
+
+            <button
+                class="finance-tool"
+                data-tool="gst"
+            >
+                🧾 GST
+            </button>
+
+
+            <button
+                class="finance-tool"
+                data-tool="tip"
+            >
+                💸 Tip
+            </button>
+
+
+            <button
+                class="finance-tool"
+                data-tool="split"
+            >
+                👥 Split Bill
+            </button>
+
+        </div>
+
+
+        <div class="finance-form">
+
+            <label id="financeLabel1">
+                Original Price
+            </label>
+
+            <input
+                type="number"
+                id="priceInput"
+                placeholder="Enter original price"
+            >
+
+
+            <label id="financeLabel2">
+                Discount (%)
+            </label>
+
+            <input
+                type="number"
+                id="discountInput"
+                placeholder="Enter discount percentage"
+            >
+
+
+            <button
+                id="calculateFinance"
+                class="finance-calculate"
+            >
+                Calculate
+            </button>
+
+
+            <div
+                class="finance-result"
+                id="financeResult"
+            >
+                Enter values to calculate.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- STUDENT MODE -->
+    <section
+        class="student-panel"
+        id="studentPanel"
+    >
+
+        <h2>
+            🎓 Student Tools
+        </h2>
+
+        <p class="panel-subtitle">
+            Academic calculations made simple.
+        </p>
+
+
+        <div class="student-tools">
+
+            <button
+                class="student-tool active"
+                data-tool="cgpa"
+            >
+                📊 CGPA
+            </button>
+
+
+            <button
+                class="student-tool"
+                data-tool="percentage"
+            >
+                📝 Percentage
+            </button>
+
+
+            <button
+                class="student-tool"
+                data-tool="marks"
+            >
+                🎯 Marks Needed
+            </button>
+
+
+            <button
+                class="student-tool"
+                data-tool="attendance"
+            >
+                📅 Attendance
+            </button>
+
+        </div>
+
+
+        <div
+            class="student-form"
+            id="studentForm"
+        >
+
+            <label>
+                Semester 1 CGPA
+            </label>
+
+            <input
+                id="cgpa1"
+                type="number"
+                placeholder="Enter CGPA"
+                step="0.01"
+            >
+
+
+            <label>
+                Semester 2 CGPA
+            </label>
+
+            <input
+                id="cgpa2"
+                type="number"
+                placeholder="Enter CGPA"
+                step="0.01"
+            >
+
+
+            <label>
+                Semester 3 CGPA
+            </label>
+
+            <input
+                id="cgpa3"
+                type="number"
+                placeholder="Enter CGPA"
+                step="0.01"
+            >
+
+
+            <button
+                id="calculateStudent"
+                class="student-calculate"
+            >
+                Calculate
+            </button>
+
+
+            <div
+                class="student-result"
+                id="studentResult"
+            >
+                Enter your values to calculate.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- HISTORY -->
+    <section class="history">
+
+        <div class="history-header">
+
+            <h2>
+                History
+            </h2>
+
+            <button id="clearHistory">
+                Clear
+            </button>
+
+        </div>
+
+
+        <div id="historyList">
+
+            <p class="empty-history">
+                No calculations yet
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
